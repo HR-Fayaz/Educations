@@ -27,7 +27,7 @@ $router->group(['prefix'=>'api'],function() use ($router){
 
     $router->group(['middleware'=>'auth'],function() use ($router){
         $router->post('logout','AuthController@logout');
-        $router->post('testuser','AuthController@me');
+        $router->post('profile','AuthController@me');
     });
 });
 

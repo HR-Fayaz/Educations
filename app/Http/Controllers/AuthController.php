@@ -7,12 +7,18 @@ use Illuminate\Support\Facades\Auth;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\User;
+use App\Http\Resources\User as UserResource;
 
 
 class AuthController extends Controller
 {
-    use UserTrait;
+    use UserTrait;      //  This trait ss used for Model's Isolation from Controller
 
+    /**
+     * User Registering For Authentication
+     * @param Request $request
+     * @return \Illuminate\Http\JsonResponse
+     */
     public function register(Request $request)
     {
 
@@ -38,7 +44,7 @@ class AuthController extends Controller
         }
 
         try{
-            return $this->create($request);
+            return $this->create($request);               // This Method Calling Is From Trait Not Model
         }catch (\Exception $er) {
             return response()->json(['status' => 'error', 'message' => $er->getMessage()]);
         }
@@ -68,7 +74,7 @@ class AuthController extends Controller
      */
     public function me()
     {
-        return response()->json(auth()->user());
+        return new UserResource(auth()->user());
     }
 
     /**
