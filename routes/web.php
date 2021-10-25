@@ -19,15 +19,24 @@ $router->get('/', function () use ($router) {
     return $router->app->version();
 });
 
-$router->post('api/register','AuthController@register');
-$router->post('api/login','AuthController@login');
+
 
 $router->group(['prefix'=>'api'],function() use ($router){
 
+    $router->post('api/register','AuthController@register');
+    $router->post('api/login','AuthController@login');
 
     $router->group(['middleware'=>'auth'],function() use ($router){
+
+        require __DIR__.'/Course/CourseRoutes.php';
+        require __DIR__.'/Headmaster/HeadmasterRoutes.php';
+        require __DIR__.'/School/SchoolRoutes.php';
+        require __DIR__.'/Teacher/TeacherRoutes.php';
+        require __DIR__.'/Student/StudentRoutes.php';
+
         $router->post('logout','AuthController@logout');
         $router->post('profile','AuthController@me');
+        //$router->apiResource('school',\App\Http\Controllers\SchoolController::class);
     });
 });
 

@@ -3,10 +3,13 @@
 namespace App\Http\Controllers;
 
 use App\Models\student;
+use App\Traits\StudentTrait;
 use Illuminate\Http\Request;
 
 class StudentController extends Controller
 {
+    use StudentTrait;
+
     /**
      * Display a listing of the resource.
      *
@@ -35,7 +38,11 @@ class StudentController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        try{
+            return $this->create($request);               // This Method Calling Is From Trait Not Model
+        }catch (\Exception $er) {
+            return response()->json(['status' => 'error', 'message' => $er->getMessage()]);
+        }
     }
 
     /**

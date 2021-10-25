@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Traits\UserTrait;
+use App\Traits\SchoolTrait;
 use Illuminate\Support\Facades\Auth;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
@@ -12,7 +12,7 @@ use App\Http\Resources\User as UserResource;
 
 class AuthController extends Controller
 {
-    use UserTrait;      //  This trait ss used for Model's Isolation from Controller
+    use SchoolTrait;      //  This trait ss used for Model's Isolation from Controller
 
     /**
      * User Registering For Authentication

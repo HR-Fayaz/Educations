@@ -3,10 +3,14 @@
 namespace App\Http\Controllers;
 
 use App\Models\school;
+use App\Traits\SchoolTrait;
 use Illuminate\Http\Request;
 
 class SchoolController extends Controller
 {
+
+    use SchoolTrait;
+
     /**
      * Display a listing of the resource.
      *
@@ -14,7 +18,7 @@ class SchoolController extends Controller
      */
     public function index()
     {
-        //
+        return $this->listschools();
     }
 
     /**
@@ -35,7 +39,11 @@ class SchoolController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        try{
+            return $this->create($request);               // This Method Calling Is From Trait Not Model
+        }catch (\Exception $er) {
+            return response()->json(['status' => 'error', 'message' => $er->getMessage()]);
+        }
     }
 
     /**
