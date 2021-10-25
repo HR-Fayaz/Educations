@@ -15,12 +15,14 @@ class User extends JsonResource
     public function toArray($request)
     {
         return[
+            'id' => (string)$this->id,
             'name' => $this->name,
             'email' => $this->email
         ];
     }
 
     /**
+     * this is for meta data e.g.  status and message
      * @return \string[][]
      */
     public function with($request)
