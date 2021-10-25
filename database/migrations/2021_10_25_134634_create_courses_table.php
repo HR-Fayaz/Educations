@@ -17,10 +17,8 @@ class CreateCoursesTable extends Migration
             $table->id();
             $table->string('title',50);
             $table->smallInteger('units_number');
-            $table->unsignedBigInteger('headmaster_id')->nullable();
             $table->unsignedBigInteger('student_id')->nullable();
 
-            $table->foreign('headmaster_id')->references('id')->on('headmasters')->onDelete('cascade');
             $table->foreign('student_id')->references('id')->on('students')->onDelete('cascade');
 
             $table->softDeletes();

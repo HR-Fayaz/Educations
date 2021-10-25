@@ -13,9 +13,6 @@ class teacher_school extends Model
 
     protected $guarded=[];
 
-//    public function headmaster()
-//    {
-//        return $this->hasOne(headmaster::class);
-//    }
+
 
 }
