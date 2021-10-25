@@ -29,12 +29,12 @@ trait SchoolTrait {
         }
     }
 
-    public function listschools(Request $request) {
+    public function listschools() {
 
-        $school = new school();
+        $school = school::all();
 
-        if($school->all()) {
-            return SchoolResource::collection($request);
+        if($school) {
+            return SchoolResource::collection($school);
         }
         else{
             return response()->json(['status'=>'error','message'=>'School Information Dose Not Saved Successfully!']);
