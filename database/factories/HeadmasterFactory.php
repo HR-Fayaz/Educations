@@ -12,7 +12,9 @@ class HeadmasterFactory extends Factory
     public function definition(): array
     {
     	return [
-    	    //
+            'firstname'=>$this->faker->firstName(),
+            'lastname'=>$this->faker->lastName(),
+            'telephone'=>$this->faker->numerify('###########')
     	];
     }
 }

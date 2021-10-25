@@ -12,7 +12,8 @@ class CourseFactory extends Factory
     public function definition(): array
     {
     	return [
-    	    //
-    	];
+            'title'=>$this->faker->name(),
+            'units_number'=>$this->faker->randomDigit()
+        ];
     }
 }
